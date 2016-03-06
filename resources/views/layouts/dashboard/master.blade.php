@@ -17,7 +17,9 @@
         @include('layouts.dashboard.menu')
         <!-- BREADCRUMB -->
         <ul class="breadcrumb">
-            @yield('breadcrumbs')
+            @section('breadcrumbs')
+                <li><a href="/dashboard">Home</a></li>
+            @show
         </ul>
         <!-- FIN BREADCRUMB -->
 
@@ -52,6 +54,7 @@
 <script type="text/javascript" src="{{asset('js/actions.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/faq.js')}}"></script>
 
+@yield('scripts')
 
 <!-- fin SCRIPTS -->
 </body>

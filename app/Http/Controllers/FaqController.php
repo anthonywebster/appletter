@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class TemplateController extends Controller
+class FaqController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        return view('dashboard.templates.index');
+        return view('dashboard.faq.index');
     }
 
     /**

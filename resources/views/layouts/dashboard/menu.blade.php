@@ -20,13 +20,13 @@
         </div>
     </li>
     <li class="xn-title">Barra de navegación</li>
-    <li class="active"><a href="home.php"><span class="fa fa-edit"></span><span class="xn-text">Edición</span></a></li>
+    <li class="active"><a href="/dashboard"><span class="fa fa-edit"></span><span class="xn-text">Edición</span></a></li>
     <li>
     <li class="xn-openable">
         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Crear cartas</span></a>
         <ul>
 
-            <li><a href="planti.php"><span class="fa fa-edit"></span>Mis Plantillas</a></li>
+            <li><a href="{{url('dashboard/templates')}}"><span class="fa fa-edit"></span>Mis Plantillas</a></li>
             <li><a href="#"><span class="fa fa-shopping-cart"></span> Comprar Nueva</a></li>
 
         </ul>
@@ -34,9 +34,9 @@
     </li>
 
 
-    <li><a href="pago.php"><span class="fa fa-shopping-cart"></span><span class="xn-text"> Mis compras</a></span></li>
-    <li><a href="perfil.php"><span class="fa fa-user"></span><span class="xn-text"> Mi perfil</span></a></li>
-    <li><a href="faq.php"><span class="fa fa-question-circle"></span><span class="xn-text"> Preguntas frecuentes</span></a></li>
+    <li><a href="{{url('dashboard/pago')}}"><span class="fa fa-shopping-cart"></span><span class="xn-text"> Mis compras</a></span></li>
+    <li><a href="{{url('dashboard/profile')}}"><span class="fa fa-user"></span><span class="xn-text"> Mi perfil</span></a></li>
+    <li><a href="{{url('dashboard/faq')}}"><span class="fa fa-question-circle"></span><span class="xn-text"> Preguntas frecuentes</span></a></li>
     <li><a href="#"><span class="fa fa-lightbulb-o"></span><span class="xn-text"> Tutorial edición</span></a></li>
     <li><a href="#"><span class="fa fa-check-circle"></span><span class="xn-text"> Licencia</span></a></li>
 
@@ -70,4 +70,4 @@
         <!-- FIN CERRAR SESION -->
 
     </ul>
-    <!-- FIN FIN-->
+    <!-- FIN FIN -->

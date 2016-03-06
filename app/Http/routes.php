@@ -27,5 +27,14 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('dashboard','DashboardController@index');
+
+    Route::group(['prefix' => 'dashboard'],function(){
+        Route::get('/','DashboardController@index');
+        Route::resource('templates','TemplateController');
+        Route::resource('pago','PaymentController');
+        Route::resource('profile','ProfileController');
+        Route::resource('faq','FaqController');
+
+    });
+
 });

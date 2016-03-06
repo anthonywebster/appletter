@@ -4,7 +4,7 @@
 @section('title','Home')
 
 @section('breadcrumbs')
-    <li><a href="#">Inicio</a></li>
+    @parent
     <li class="active">Dashboard Cliente</li>
 @endsection
 

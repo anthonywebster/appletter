@@ -25,7 +25,7 @@
 
             <!-- logo -->
             <div class="logo">
-                <a href="index.html">Notita.org</a>
+                <a href="/">Notita.org</a>
             </div>
             <!-- logo -->
 

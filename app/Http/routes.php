@@ -26,15 +26,23 @@ Route::get('/', function () {
 |
 */
 
+Route::get('/', 'HomeController@index');
+
 Route::group(['middleware' => ['web']], function () {
 
-    Route::group(['prefix' => 'dashboard'],function(){
+    Route::auth();
+
+    Route::get('auth/facebook','Auth\AuthController@redirectToProvider');
+    Route::get('auth/facebook/callback','Auth\AuthController@handleProviderCallback');
+
+    Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
         Route::resource('templates','TemplateController');
         Route::resource('pago','PaymentController');
         Route::resource('profile','ProfileController');
         Route::resource('faq','FaqController');
-
     });
+
+    Route::get('/home', 'HomeController@home');
 
 });

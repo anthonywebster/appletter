@@ -89,6 +89,24 @@ class AuthController extends Controller
             return redirect('auth/facebook');
         }
 
-        dd($user);
+        $authUser = $this->findOrCreateUser($user);
+
+        Auth::login($authUser,true);
+
+        return \Redirect::to('/');
+    }
+
+    private function findOrCreateUser ($facebookUser)
+    {
+        if($authUser = User::where('facebook_id',$facebookUser->id)->first()){
+            return $authUser;
+        }
+
+        return User::create([
+            'name'  => $facebookUser->name,
+            'email' => $facebookUser->email,
+            'facebook_id' => $facebookUser->id,
+            'avatar' => $facebookUser->avatar
+        ]);
     }
 }

@@ -380,108 +380,58 @@
 
     <!-- ./seccion 2 -->
     <!-- Formularios y precios -->
-    <div class="page-content-wrap bg-light bg-texture-1" >
-        <section class="container" >
-            <div class="row">
-                <div class="col-md-6 title_price">
-                    <h2 >Datos del comprador</h2>
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre <span class="text-hightlight">*</span></label>
-                                    <input type="text" class="form-control" required/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Apellido <span class="text-hightlight">*</span></label>
-                                    <input type="text" class="form-control" required/>
-                                </div>
-                            </div>
-                        </div>
+        <div class="page-content-wrap bg-light bg-texture-1" >
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Telefono<span class="text-hightlight">*</span></label>
-                                    <input type="Number" class="form-control" required/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email <span class="text-hightlight">*</span></label>
-                                    <input type="email" class="form-control" required/>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>Datos del Envío</h2>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre <span class="text-hightlight">*</span></label>
-                                    <input type="text" class="form-control" required/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Apellido <span class="text-hightlight">*</span></label>
-                                    <input type="text" class="form-control" required/>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Sexo<span class="text-hightlight">*</span></label>
-                                    <input type="radio" name="sex" value="Hombre"/>H
-                                    <input type="radio" name="sex"  value="Mujer"/>M
+            <section class="container" >
+                <div class="row">
+                    <div class="col-md-6 title_price">
+                        <h2 >Datos del comprador</h2>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nombre <span class="text-hightlight">*</span></label>
+                                        <input type="text" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Apellido <span class="text-hightlight">*</span></label>
+                                        <input type="text" class="form-control" required/>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control"/>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Telefono<span class="text-hightlight">*</span></label>
+                                        <input type="Number" class="form-control" required/>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Dirección  <span class="text-hightlight">*</span></label>
-                                    <input type="text" class="form-control" required/>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email <span class="text-hightlight">*</span></label>
+                                        <input type="email" class="form-control" required/>
+                                    </div>
                                 </div>
+    <a href="#"><img src="{{asset('img/facebook_register_es.gif')}}" alt="facebook register notita" class="img-responsive centerblock"></a>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>País <span class="text-hightlight">*</span></label>
-                                    <p class="form-control-static">Estados Unidos</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Ciudad <span class="text-hightlight">*</span></label>
-                                    <input type="text" class="form-control" required/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <img src="{{asset('img/paypal-verified.png')}}" alt="paypal verificacion" class="img-responsive centerblock">
+                      </div>
                     <div class="col-md-6 price">
                         <h1>Solicite su carta por solo</h1>
                         <img src="{{asset('img/price.png')}}" class="img-responsive center-block" alt="precio del servicio">
                         <div class="text-center" style="margin-top:70px;">
                             <button class="btn btn-success btn-xl" ><span class="fa fa-shopping-cart"></span>Comprar ahora</button>
                         </div>
-                        <img src="{{asset('img/paypal-verified.png')}}" alt="paypal verificacion" class="img-responsive centerblock">
                     </div>
-                </form>
-            </div>
-        </section>
-    </div>
-    <!--/formularios y precio -->
+                    </form>
+                </div>
+            </section>
+        </div>
+        <!--/formularios y precio -->
     <!-- Plantillas -->
     <div class="page-content-wrap bg-templates" id="plantillas">
 

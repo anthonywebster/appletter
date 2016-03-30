@@ -100,6 +100,12 @@ class AuthController extends Controller
     {
         if($authUser = User::where('facebook_id',$facebookUser->id)->first()){
             return $authUser;
+        } elseif($authUser = User::where('email',$facebookUser->email)->first()) {
+            $authUser->facebook_id = $facebookUser->id;
+            $authUser->avatar = $facebookUser->avatar;
+            $authUser->save();
+
+            return $authUser;
         }
 
         return User::create([

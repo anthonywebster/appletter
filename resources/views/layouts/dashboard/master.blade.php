@@ -51,7 +51,7 @@
 <!-- FIN GALERIA -->
 
 <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/actions.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/actions_dashboard.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/faq.js')}}"></script>
 
 @yield('scripts')

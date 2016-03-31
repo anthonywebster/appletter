@@ -26,7 +26,7 @@ Route::get('/', function () {
 |
 */
 
-Route::get('/', 'HomeController@index');
+
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -44,5 +44,5 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/home', 'HomeController@home');
-
+    Route::get('/', 'HomeController@index');
 });

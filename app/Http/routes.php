@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
+        Route::get('templates/all','TemplateController@all');
         Route::resource('templates','TemplateController');
         Route::resource('pago','PaymentController');
         Route::resource('profile','ProfileController');

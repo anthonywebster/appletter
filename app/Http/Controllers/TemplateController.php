@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Template;
+use App\TemplateUser;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TemplateController extends Controller
 {
@@ -16,7 +19,18 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        return view('dashboard.templates.index');
+        $user = Auth::user()->id;
+        $templates = TemplateUser::where('user_id',$user)->get();
+
+
+        return view('dashboard.templates.index',compact('templates'));
+    }
+
+    public function all()
+    {
+        $templates = Template::all();
+
+        return view('dashboard.templates.templates',compact('templates'));
     }
 
     /**

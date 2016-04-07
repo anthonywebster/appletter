@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.master')
 
-@section('title','Mis plantillas')
+@section('title','Plantillas')
 
 @section('breadcrumbs')
     @parent
-    <li><a href="active">Mis Plantillas</a></li>
+    <li><a href="active">Plantillas</a></li>
 @endsection
 
 @section('content')
@@ -41,28 +41,28 @@
 
             @if ( !empty($templates) )
 
-            <div class="gallery" id="links">
+                <div class="gallery" id="links">
 
-                @foreach($templates as $template)
+                    @foreach($templates as $template)
 
-                <a class="gallery-item" href="{{asset('img/plantillas/girls-1.jpg')}}" title="{{ $template->content }}" data-gallery>
-                    <div class="image">
-                        <img src="{{asset('img/plantillas/girls-1.jpg')}}" alt="Nature Image 1"/>
-                        <ul class="gallery-item-controls">
-                            <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
-                            <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                        </ul>
-                    </div>
-                    <div class="meta">
-                        <strong></strong>
-                        <span></span>
-                    </div>
-                </a>
+                        <a class="gallery-item" href="{{asset('img/plantillas/nature-1.jpg')}}" title="{{ $template->name }}" data-gallery>
+                            <div class="image">
+                                <img src="{{asset('img/plantillas/nature-1.jpg')}}" alt="Nature Image 1"/>
+                                <ul class="gallery-item-controls">
+                                    <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
+                                    <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                </ul>
+                            </div>
+                            <div class="meta">
+                                <strong></strong>
+                                <span></span>
+                            </div>
+                        </a>
 
-                @endforeach
+                    @endforeach
 
 
-            </div>
+                </div>
 
             @endif
 

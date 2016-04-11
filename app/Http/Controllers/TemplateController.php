@@ -76,7 +76,10 @@ class TemplateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $template = TemplateUser::findOrFail($id);
+        $templateMain = Template::findOrFail($template->template_id);
+
+        return view('dashboard.templates.edit',compact('template','templateMain'));
     }
 
     /**

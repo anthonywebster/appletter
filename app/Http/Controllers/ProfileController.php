@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -14,9 +16,18 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('dashboard.profile.index');
+        $id = Auth::user()->id;
+        $users = User::findOrFail($id);
+
+        return view('dashboard.profile.index', compact('users'));
     }
 
     /**
@@ -59,7 +70,11 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = Auth::user()->id;
+        $users = User::findOrFail($id);
+
+        return view('dashboard.profile.edit', compact('users'));
+
     }
 
     /**
@@ -71,7 +86,12 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = User::findOrFail($id);
+        $info->update($request->all());
+
+        flash()->success('Usuario ha sido actualizado');
+
+        return redirect('dashboard/profile');
     }
 
     /**

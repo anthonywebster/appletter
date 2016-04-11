@@ -13,6 +13,9 @@
         <div class="col-md-12">
 
             <div class="panel panel-default">
+
+                @include('flash::message')
+
                 <div class="panel-body profile" style="background: url('assets/images/gallery/music-4.jpg') center center no-repeat;">
                     <div class="profile-image">
                         <img src="{{asset('img/avatar.jpg')}}" alt="Nadia Ali"/>
@@ -29,7 +32,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-info btn-rounded btn-block"><span class="fa fa-check"></span> Editar</button>
+                            <a class="btn btn-info btn-rounded btn-block" href="profile/{{ $users->id }}/edit"><span class="fa fa-check"></span> Editar</a>
                         </div>
                         <div class="col-md-6">
                             <button class="btn btn-primary btn-rounded btn-block"><span class="fa fa-comments"></span> Chat</button>
@@ -37,9 +40,9 @@
                     </div>
                 </div>
                 <div class="panel-body list-group border-bottom">
-                    <a href="#" class="list-group-item active"><span class="fa fa-user"></span> Jonathan Abzalon Cortez Mendiola</a>
-                    <a href="#" class="list-group-item"><span class="fa fa-coffee"></span> Americas No.4 Casa No.1</a>
-                    <a href="#" class="list-group-item"><span class="fa fa-phone"></span> 76444505 </a>
+                    <a href="#" class="list-group-item active"><span class="fa fa-user"></span> {{ $users->name }}</a>
+                    <a href="#" class="list-group-item"><span class="fa fa-coffee"></span> {{ $users->direction }}</a>
+                    <a href="#" class="list-group-item"><span class="fa fa-phone"></span> {{ $users->telephone }} </a>
                     <a href="#" class="list-group-item"><span class="fa fa-map-marker"></span> Managua Nicaragua</a>
 
                 </div>

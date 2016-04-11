@@ -62,7 +62,10 @@ class TemplateController extends Controller
      */
     public function show($id)
     {
-        //
+        $template = TemplateUser::findOrFail($id);
+        $templateMain = Template::findOrFail($template->template_id);
+
+        return view('dashboard.templates.show',compact('template','templateMain'));
     }
 
     /**

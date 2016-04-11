@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="{{asset('img/favicon.png')}}" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('css/style.css')}}"/>
+
+    @yield('files-templates')
 </head>
 <body>
 <!-- INICIO CONTAINER -->

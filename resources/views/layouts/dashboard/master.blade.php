@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('css/style.css')}}"/>
 
     @yield('files-templates')
+
+    <style>
+        @yield('css')
+    </style>
 </head>
 <body>
 <!-- INICIO CONTAINER -->

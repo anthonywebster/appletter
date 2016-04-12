@@ -13,28 +13,25 @@
     <link rel="stylesheet" href="{{ asset('js/redactor/redactor.css') }}" />
 @endsection
 
+@section('css')
+#Cont_Carta {
+    height: auto;
+    float: left;
+    margin-left: 10%;
+}
+
+    p.img {
+float:right;
+    }
+@endsection
+
 @section('content')
 
     <div class="content-frame">
         <?php $dirImage = asset($templateMain->template_name.'/img\/'); ?>
-        {!! Form::model($template, ['method' => 'PATCH', 'action' => ['TemplateController@update', $template->id], 'class' => 'form-horizontal']) !!}
 
+        {!! str_replace('img/',$dirImage,$template->content) !!}
 
-        <div class="form-group">
-
-            <div class="col-sm-10">
-                {!! Form::textarea('content',str_replace('img/',$dirImage,$template->content), ['class' => 'form-control', 'id' => 'content' ]) !!}
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                {!! Form::submit('Guardar', ['class' => 'btn btn-info' ]) !!}
-            </div>
-        </div>
-
-        {!! Form::close() !!}
     </div>
 
 @endsection
@@ -44,7 +41,9 @@
     <script type="text/javascript">
         $(function()
         {
-            $('#content').redactor();
+            $('.content-frame p').redactor({
+                buttons: []
+            });
         });
     </script>
 @endsection

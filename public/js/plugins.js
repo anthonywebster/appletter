@@ -350,7 +350,7 @@ $(function() {
         var uiSummernote = function(){
             /* Extended summernote editor */
             if($(".summernote").length > 0){
-                $(".summernote").summernote({height: 250,
+                $(".summernote").summernote({
                                              codemirror: {
                                                 mode: 'text/html',
                                                 htmlMode: true,

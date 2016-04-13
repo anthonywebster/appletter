@@ -91,7 +91,15 @@ class TemplateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = TemplateUser::findOrFail($id);
+        $info->update($request->all());
+
+        return 1;
+    }
+
+    public function updateContent($content)
+    {
+
     }
 
     /**

@@ -10,40 +10,68 @@
 @section('files-templates')
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/mama_1.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/redactor/redactor.css') }}" />
 @endsection
 
 @section('css')
-#Cont_Carta {
-    height: auto;
-    float: left;
-    margin-left: 10%;
-}
-
-    p.img {
-float:right;
+    #save-template {
+        float:right;
     }
+@endsection
+
+@section('plugins')
+<script type="text/javascript" src="{{ asset('js/plugins/summernote/summernote.js') }}"></script>
 @endsection
 
 @section('content')
 
     <div class="content-frame">
+
+        {!! Form::open(['url' => 'host', 'method' => 'POST', 'id' => 'save-template']) !!}
+
+            <input type="submit" value="Guardar" class="btn btn-success">
+            <input type="hidden" id="id-template" value="{{ $template->id }}">
+        {!! Form::close() !!}
+        <br><br>
         <?php $dirImage = asset($templateMain->template_name.'/img\/'); ?>
 
-        {!! str_replace('img/',$dirImage,$template->content) !!}
+        <div class="summernote">
+            <div id="main">
+                {!! str_replace('img/',$dirImage,$template->content) !!}
+            </div>
+        </div>
+
 
     </div>
 
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/redactor/redactor.js') }}"></script>
+
     <script type="text/javascript">
         $(function()
         {
-            $('.content-frame p').redactor({
-                buttons: []
-            });
+            $('#save-template').submit(function(e) {
+                e.preventDefault();
+
+                var content = $("#main").html();
+                var idTemplate = $("#id-template").val();
+                var token = $("input[name='_token']").val();
+
+                $('.summernote').destroy();
+
+                if (typeof(content) !== 'undefined' ) {
+                    $.ajax({
+                        url: 'http://e/appletter/public/dashboard/templates/'+idTemplate,
+                        headers: {'X-CSRF-TOKEN': token},
+                        data: content,
+                        type: 'PATCH',
+                        success: function(data){
+                            alert("Template ha sido actualizada")
+                        }
+                    });
+                }
+
+            })
         });
     </script>
 @endsection

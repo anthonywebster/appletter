@@ -33,7 +33,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
     Route::get('auth/facebook','Auth\AuthController@redirectToProvider');
+
     Route::get('auth/facebook/callback','Auth\AuthController@handleProviderCallback');
+
+    Route::get('payment',['as' => 'payment','uses' => 'PaymentController@postPayment']);
+
+    Route::get('payment/status',['as' => 'payment.status', 'uses' => 'PaymentController@paymentStatus']);
 
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
@@ -45,5 +50,6 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/home', 'HomeController@home');
+
     Route::get('/', 'HomeController@index');
 });

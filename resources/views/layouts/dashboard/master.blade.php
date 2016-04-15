@@ -54,6 +54,7 @@
 <script type="text/javascript" src="{{asset('js/actions_dashboard.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/faq.js')}}"></script>
 
+
 @yield('scripts')
 
 <!-- fin SCRIPTS -->

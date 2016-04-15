@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'master_of_breakregular';
+    src: url('../font/master_of_break-webfont.eot');
+    src: url('../font/master_of_break-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/master_of_break-webfont.woff2') format('woff2'),
+         url('../font/master_of_break-webfont.woff') format('woff'),
+         url('../font/master_of_break-webfont.ttf') format('truetype'),
+         url('../font/master_of_break-webfont.svg#master_of_breakregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+font-family: 'Helvetica Neue LT Std 45 Light';
+font-style: normal;
+font-weight: normal;
+src: local('Helvetica Neue LT Std 45 Light'), url('../font/HelveticaNeueLTStd Lt.woff') format('woff');
+}
+#Cont_Carta{
+	width: 612px;
+	height: 792px;
+	background-image: url("../img/fondo.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-bottom: 20px;
+}
+#titulo{
+	line-height:550%;
+}
+
+#Cont_Carta h4 {
+	color: #E30613;
+	font-size: 70px;
+	font-family: 'Helvetica Neue LT Std 45 Light';
+	padding: 20px 0 0 30px;
+
+}
+
+#madre {
+	color: #E30613;
+	font-size: 120px;
+	font-family: 'Helvetica Neue LT Std 45 Light';
+	padding:0 0 0 170px;
+	font-weight: bold;
+
+}
+#texto_carta p{
+	font-size: 14px;
+	text-align: justify;
+}
+#texto_carta{
+   padding: 10px 0 0 50%;
+   width: 600px;
+}
+.foto1 {
+	width: 25%;
+	border-radius: 250px;
+	float: right;
+	border: #E30613 solid 5px;
+	margin-right: 10px
+}
+#firma{
+	float: left;
+	margin: 80px 0 0 320px;
+	font-family: 'master_of_breakregular';
+	font-size: 28px;
+}
+
+@media only screen and (max-width: 612px) {
+    #Cont_Carta{
+	width: 100%;
+	min-height: 792px;
+	background-image: url("../img/fondo2.png");
+	background-size: length;
+   }
+   #madre {
+	font-size: 100px;
+	display: block;
+    padding:0 0 0 20%;
+   }
+   .foto1 {
+	width: 40%;
+	border-radius: 250px;
+	float: right;
+	border: #E30613 solid 5px;
+   }
+   #texto_carta p{
+	font-size: 14px;
+	text-align: justify;
+   }
+   #texto_carta{
+   padding: 10px;
+   text-align: center;
+   width: 100%;
+   }
+   #firma{
+	margin: 80px 0 0 30%;
+	font-size: 30px;
+   }
+   
+
+}
+
+@media only screen and (max-width: 400px) {
+ 
+   #madre {
+    padding:0 0 0 5%;
+   }
+   #firma{
+	margin: 10px 0 0 10%;
+	font-size: 28px;
+   }
+}

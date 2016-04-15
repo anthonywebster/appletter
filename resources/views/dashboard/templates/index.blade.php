@@ -53,6 +53,7 @@
                             <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
                         </ul>
                     </div>
+
                     <div class="meta">
                         <strong></strong>
                         <span></span>

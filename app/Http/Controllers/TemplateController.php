@@ -62,7 +62,10 @@ class TemplateController extends Controller
      */
     public function show($id)
     {
-        //
+        $template = TemplateUser::findOrFail($id);
+        $templateMain = Template::findOrFail($template->template_id);
+
+        return view('dashboard.templates.show',compact('template','templateMain'));
     }
 
     /**
@@ -73,7 +76,10 @@ class TemplateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $template = TemplateUser::findOrFail($id);
+        $templateMain = Template::findOrFail($template->template_id);
+
+        return view('dashboard.templates.edit',compact('template','templateMain'));
     }
 
     /**
@@ -85,7 +91,15 @@ class TemplateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = TemplateUser::findOrFail($id);
+        $info->update($request->all());
+
+        return 1;
+    }
+
+    public function updateContent($content)
+    {
+
     }
 
     /**

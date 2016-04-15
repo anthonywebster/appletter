@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="{{asset('img/favicon.png')}}" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('css/style.css')}}"/>
+
+    @yield('files-templates')
+
+    <style>
+        @yield('css')
+    </style>
 </head>
 <body>
 <!-- INICIO CONTAINER -->
@@ -43,6 +49,8 @@
 <script type="text/javascript" src="{{asset('js/plugins/jquery/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/plugins/bootstrap/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/plugins/bootstrap/bootstrap-select.js')}}"></script>
+
+@yield('plugins')
 <!-- END PLUGINS -->
 
 <!-- GALERIA DE PLANTILLAS -->

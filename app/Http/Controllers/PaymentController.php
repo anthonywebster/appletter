@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Payments;
+use App\PaymentTransaction;
+use App\TemplateDefaul;
+use App\TemplateUser;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -179,6 +183,46 @@ class PaymentController extends Controller
         $execution->setPayerId($request->get('PayerID'));
 
         $result = $payment->execute($execution,$this->_api_context);
+
+        $inputs = [];
+
+        if ( !is_null($result) )
+        {
+            $inputs["user_id"] = \Auth::user()->id;
+            $inputs["payer_id"] = isset($result["payer"]["payer_info"]["payer_id"]) ? $result["payer"]["payer_info"]["payer_id"] : null;
+            $inputs["paypal_payment_id"] = isset($result["id"]) ? $result["id"] : null;
+            $inputs["state"] = isset($result["state"]) ? $result["state"] : null;
+            $inputs["create_time"] = isset($result["create_time"]) ? $result["create_time"] : null;
+            $inputs["currency"] = isset($result["transactions"]["amount"]["currency"]) ? $result["transactions"]["amount"]["currency"] : null;
+            $inputs["amount"] = isset($result["transactions"]["amount"]["amount"]) ? $result["transactions"]["amount"]["amount"] : null;
+            $inputs["timestamp"] = date('U');
+
+            $inputs["token"] = Input::has('token') ? \Input::get('token') : null;
+
+            if ( isset($result["state"]) && ($result["state"] == "approved") ) {
+
+                $templateDefault = TemplateDefaul::findOrFail(1);
+                $inputsTemplate["content"] = $templateDefault->content;
+                $inputsTemplate["user_id"] = $inputs["user_id"];
+
+                $templateUser = TemplateUser::create($inputsTemplate);
+                $templateUserId = $templateUser->id;
+                $inputs['template_users_id'] = $templateUserId;
+
+                $payment = Payments::create($inputs);
+                $paymentTransaction = PaymentTransaction::create($inputs);
+
+            }
+            else
+            {
+                $paymentTransaction = PaymentTransaction::create($inputs);
+            }
+        }
+        else
+        {
+            die("Fallo en el pago");
+        }
+
         dd($result);
     }
 }

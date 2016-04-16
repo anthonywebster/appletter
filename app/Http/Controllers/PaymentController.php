@@ -11,6 +11,7 @@ use PayPal\Api\Item;
 use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
+use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
@@ -168,7 +169,16 @@ class PaymentController extends Controller
     public function paymentStatus(Request $request)
     {
         $payment_id = \Session::get('paypal_payment_id');
-        dd($request->all());
+
 //        \Session::forget('paypal_payment_id');
+
+        $payment = Payment::get($payment_id,$this->_api_context);
+
+        $execution = new PaymentExecution();
+
+        $execution->setPayerId($request->get('PayerID'));
+
+        $result = $payment->execute($execution,$this->_api_context);
+        dd($result);
     }
 }

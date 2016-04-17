@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
 use PayPal\Api\Amount;
 use PayPal\Api\Item;
 use PayPal\Api\ItemList;
@@ -189,17 +190,18 @@ class PaymentController extends Controller
         if ( !is_null($result) )
         {
             $inputs["user_id"] = \Auth::user()->id;
-            $inputs["payer_id"] = isset($result["payer"]["payer_info"]["payer_id"]) ? $result["payer"]["payer_info"]["payer_id"] : null;
-            $inputs["paypal_payment_id"] = isset($result["id"]) ? $result["id"] : null;
-            $inputs["state"] = isset($result["state"]) ? $result["state"] : null;
-            $inputs["create_time"] = isset($result["create_time"]) ? $result["create_time"] : null;
-            $inputs["currency"] = isset($result["transactions"]["amount"]["currency"]) ? $result["transactions"]["amount"]["currency"] : null;
-            $inputs["amount"] = isset($result["transactions"]["amount"]["amount"]) ? $result["transactions"]["amount"]["amount"] : null;
+
+            $inputs["payer_id"] = isset($result->payer->payer_info->payer_id) ? $result->payer->payer_info->payer_id : null;
+            $inputs["paypal_payment_id"] = isset($result->id) ? $result->id : null;
+            $inputs["state"] = isset($result->state) ? $result->state : null;
+            $inputs["create_time"] = isset($result->create_time) ? $result->create_time : null;
+            $inputs["currency"] = isset($result->transactions[0]->amount->currency) ? $result->transactions[0]->amount->currency : null;
+            $inputs["amount"] = isset($result->transactions[0]->amount->total) ? $result->transactions[0]->amount->total : null;
             $inputs["timestamp"] = date('U');
 
-            $inputs["token"] = Input::has('token') ? \Input::get('token') : null;
+            $inputs["token"] = isset($request['token']) ? $request['token'] : null;
 
-            if ( isset($result["state"]) && ($result["state"] == "approved") ) {
+            if ( isset($result->state) && ($result->state == "approved") ) {
 
                 $templateDefault = TemplateDefaul::findOrFail(1);
                 $inputsTemplate["content"] = $templateDefault->content;
@@ -212,10 +214,15 @@ class PaymentController extends Controller
                 $payment = Payments::create($inputs);
                 $paymentTransaction = PaymentTransaction::create($inputs);
 
+                flash()->success('Se ha hecho el pago correctamente!');
+                return redirect('/dashboard');
+
             }
             else
             {
                 $paymentTransaction = PaymentTransaction::create($inputs);
+                flash()->error('Se ha generado un error con su pago!');
+                return redirect('/dashboard');
             }
         }
         else

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Template;
 use App\TemplateUser;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class TemplateController extends Controller
 {
@@ -111,5 +113,23 @@ class TemplateController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function send($id)
+    {
+        $user = User::findOrFail($id);
+        Mail::send('emails.content-mail',
+            array(
+                'name' => $user->name,
+                'email' => $user->email,
+            ), function($message) {
+                $message->from('lariosly2@gmail.com','Admin Site');
+                $message->to('fernando@ibisservicios.com', 'Admin Site')->subject('Plantilla Personalizada');
+            }
+        );
+
+        flash()->success("Su mensaje ha sido enviado");
+        return redirect()->back();
+
     }
 }

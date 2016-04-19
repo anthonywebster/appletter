@@ -57,7 +57,7 @@
                 <li><a href="#index">Inicio</a></li>
                 <li><a href="#comprar">Solicite su carta</a></li>
                 <li><a href="#plantillas">Plantillas</a></li>
-                <li class="b-login"><a href="{{url('/login')}}">Login</a> </li>
+                <li class="b-login"><a href="{{ isset(Auth::user()->id) ? url('/dashboard') :url('/login') }}">{{ isset(Auth::user()->id) ? "Dashboard" : "Login" }}</a> </li>
 
             </ul>
             <!-- ./Menu -->

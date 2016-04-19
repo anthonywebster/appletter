@@ -6,6 +6,7 @@ use App\Payments;
 use App\PaymentTransaction;
 use App\TemplateDefaul;
 use App\TemplateUser;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -31,6 +32,7 @@ class PaymentController extends Controller
 
     public function __construct()
     {
+
         $this->paypal_config = \Config::get('paypal');
 
         $this->_api_context = new ApiContext(new OAuthTokenCredential($this->paypal_config['client_id'],$this->paypal_config['secret']));
@@ -201,6 +203,9 @@ class PaymentController extends Controller
 
             $inputs["token"] = isset($request['token']) ? $request['token'] : null;
 
+            $infoUser = User::findOrFail($inputs["user_id"]);
+            $inputUser["active"] = 1;
+
             if ( isset($result->state) && ($result->state == "approved") ) {
 
                 $templateDefault = TemplateDefaul::findOrFail(1);
@@ -214,6 +219,8 @@ class PaymentController extends Controller
                 $payment = Payments::create($inputs);
                 $paymentTransaction = PaymentTransaction::create($inputs);
 
+                $infoUser->update($inputUser);
+
                 flash()->success('Se ha hecho el pago correctamente!');
                 return redirect('/dashboard');
 
@@ -222,7 +229,10 @@ class PaymentController extends Controller
             {
                 $paymentTransaction = PaymentTransaction::create($inputs);
                 flash()->error('Se ha generado un error con su pago!');
-                return redirect('/dashboard');
+
+                $infoUser->delete();
+                \Auth::logout();
+                return redirect('/login');
             }
         }
         else

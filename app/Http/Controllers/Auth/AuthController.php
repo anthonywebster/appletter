@@ -93,7 +93,7 @@ class AuthController extends Controller
 
         Auth::login($authUser,true);
 
-        return \Redirect::to('/dashboard');
+        return \Redirect::to('/payment');
     }
 
     private function findOrCreateUser ($facebookUser)

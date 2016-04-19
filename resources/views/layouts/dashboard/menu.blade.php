@@ -10,10 +10,10 @@
         </a>
         <div class="profile">
             <div class="profile-image">
-                <img src="{{asset('img/avatar.jpg')}}" alt="John Doe"/>
+                <img src="{{ isset(Auth::user()->id) && Auth::user()->avatar ? Auth::user()->avatar : asset('img/user.png')}}" alt="John Doe"/>
             </div>
             <div class="profile-data">
-                <div class="profile-data-name">Jonathan Cortez</div>
+                <div class="profile-data-name">{{ isset(Auth::user()->id) ? Auth::user()->name : "" }}</div>
                 <div class="profile-data-title">Web Developer/Designer</div>
             </div>
 

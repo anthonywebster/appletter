@@ -43,6 +43,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
         Route::get('templates/all','TemplateController@all');
+        Route::get('templates/{id}/imprimir','TemplateController@imprimir');
         Route::get('templates/{id}/enviar','TemplateController@send');
         Route::resource('templates','TemplateController');
         Route::resource('pago','PaymentController');

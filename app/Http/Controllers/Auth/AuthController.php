@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -92,6 +93,11 @@ class AuthController extends Controller
         $authUser = $this->findOrCreateUser($user);
 
         Auth::login($authUser,true);
+
+        if ( Auth::user()->active == 1) {
+
+            return Redirect::to('/dashboard')->with('status-active', 1);
+        }
 
         return \Redirect::to('/payment');
     }

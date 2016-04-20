@@ -292,7 +292,7 @@
             </div>
 
         </div>
-        \
+
     </div>
 
 
@@ -387,6 +387,13 @@
                 <div class="row">
                     <div class="col-md-6 title_price">
                         <h2 >Datos del comprador</h2>
+
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <p class="bg-danger alert">{{ $error }}</p>
+                            @endforeach
+                        @endif
+
                         <form role="form" method="POST" action="{{ url('/register') }}">
                             {!! csrf_field() !!}
                             <div class="row">

@@ -122,6 +122,7 @@ class TemplateController extends Controller
             array(
                 'name' => $user->name,
                 'email' => $user->email,
+                'id_template' => $id
             ), function($message) {
                 $message->from('lariosly2@gmail.com','Admin Site');
                 $message->to('fernando@ibisservicios.com', 'Admin Site')->subject('Plantilla Personalizada');
@@ -131,5 +132,10 @@ class TemplateController extends Controller
         flash()->success("Su mensaje ha sido enviado");
         return redirect()->back();
 
+    }
+
+    public function imprimir($id)
+    {
+        dd($id);
     }
 }

@@ -136,6 +136,9 @@ class TemplateController extends Controller
 
     public function imprimir($id)
     {
-        dd($id);
+        $template = TemplateUser::findOrFail($id);
+        $templateMain = Template::findOrFail($template->template_id);
+
+        return view('templates.print',compact('template','templateMain'));
     }
 }

@@ -351,12 +351,7 @@ $(function() {
             /* Extended summernote editor */
             if($(".summernote").length > 0){
                 $(".summernote").summernote({
-                                             codemirror: {
-                                                mode: 'text/html',
-                                                htmlMode: true,
-                                                lineNumbers: true,
-                                                theme: 'default'
-                                              }
+                    airMode: true
                 });
             }
             /* END Extended summernote editor */

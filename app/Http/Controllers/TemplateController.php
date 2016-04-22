@@ -84,6 +84,7 @@ class TemplateController extends Controller
         return view('dashboard.templates.edit',compact('template','templateMain'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -96,7 +97,7 @@ class TemplateController extends Controller
         $info = TemplateUser::findOrFail($id);
         $info->update($request->all());
 
-        return 1;
+        return $request["content"];
     }
 
     public function updateContent($content)

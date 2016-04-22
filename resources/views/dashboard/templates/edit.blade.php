@@ -16,10 +16,13 @@
     #save-template {
         float:right;
     }
+    #Cont_Carta {
+        height: 900px;
+    }
 @endsection
 
 @section('plugins')
-<script type="text/javascript" src="{{ asset('js/plugins/summernote/summernote.js') }}"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 @endsection
 
 @section('content')
@@ -34,7 +37,7 @@
         <br><br>
         <?php $dirImage = asset($templateMain->template_name.'/img\/'); ?>
 
-        <div class="summernote">
+        <div>
             <div id="main">
                 {!! str_replace('img/',$dirImage,$template->content) !!}
             </div>
@@ -53,20 +56,25 @@
             $('#save-template').submit(function(e) {
                 e.preventDefault();
 
+                alert("si");
+
                 var content = $("#main").html();
                 var idTemplate = $("#id-template").val();
                 var token = $("input[name='_token']").val();
 
-                $('.summernote').destroy();
+                $('.summernote').summernote('destroy');
+
+                alert(content);
+
 
                 if (typeof(content) !== 'undefined' ) {
                     $.ajax({
-                        url: 'http://e/appletter/public/dashboard/templates/'+idTemplate,
+                        url: 'http://appletter.dev/dashboard/templates/'+idTemplate,
                         headers: {'X-CSRF-TOKEN': token},
-                        data: content,
+                        content: content,
                         type: 'PATCH',
                         success: function(data){
-                            alert("Template ha sido actualizada")
+                            alert(data);
                         }
                     });
                 }

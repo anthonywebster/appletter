@@ -40,9 +40,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('payment/status',['as' => 'payment.status', 'uses' => 'PaymentController@paymentStatus']);
 
+    Route::get('dashboard/templates/lista','TemplateController@lista');
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
         Route::get('templates/all','TemplateController@all');
+        Route::get('templates/list','TemplateController@list');
         Route::get('templates/{id}/imprimir','TemplateController@imprimir');
         Route::get('templates/{id}/enviar','TemplateController@send');
         Route::resource('templates','TemplateController');

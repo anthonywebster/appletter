@@ -40,6 +40,22 @@ $(document).ready(function(){
         });
         return false;
     });
+
+    $(".gallery-item-show").on("click",function(){
+        
+        var url = $(this).data("url");
+        window.location.href = url;
+
+        return false;
+    });
+
+    $(".gallery-item-edit").on("click",function(){
+
+        var url = $(this).data("url");
+        window.location.href = url;
+        return false;
+    });
+    
     $("#gallery-toggle-items").on("click",function(){
         
         $(".gallery-item").each(function(){

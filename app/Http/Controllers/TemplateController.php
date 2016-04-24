@@ -23,16 +23,22 @@ class TemplateController extends Controller
     {
         $user = Auth::user()->id;
         $templates = TemplateUser::where('user_id',$user)->get();
+        $templatesMain = Template::lists("name","id")->toArray();
 
-
-        return view('dashboard.templates.index',compact('templates'));
+        return view('dashboard.templates.index',compact('templates','templatesMain'));
     }
 
     public function all()
     {
         $templates = Template::all();
-
         return view('dashboard.templates.templates',compact('templates'));
+    }
+
+    public function lista()
+    {
+        
+        $templates = TemplateUser::all();
+        return view('dashboard.templates.lista',compact('templates'));
     }
 
     /**

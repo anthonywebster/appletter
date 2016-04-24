@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Payments;
 use App\PaymentTransaction;
+use App\Template;
 use App\TemplateDefaul;
 use App\TemplateUser;
 use App\User;
@@ -176,11 +177,9 @@ class PaymentController extends Controller
     public function paymentStatus(Request $request)
     {
         $payment_id = \Session::get('paypal_payment_id');
-
 //        \Session::forget('paypal_payment_id');
-
+        
         $payment = Payment::get($payment_id,$this->_api_context);
-
         $execution = new PaymentExecution();
 
         $execution->setPayerId($request->get('PayerID'));
@@ -208,9 +207,10 @@ class PaymentController extends Controller
 
             if ( isset($result->state) && ($result->state == "approved") ) {
 
-                $templateDefault = TemplateDefaul::findOrFail(1);
-                $inputsTemplate["content"] = $templateDefault->content;
+                $template = Template::findOrFail(1);
+                $inputsTemplate["content"] = $template->content;
                 $inputsTemplate["user_id"] = $inputs["user_id"];
+                $inputsTemplate["template_id"] = $template->id;
 
                 $templateUser = TemplateUser::create($inputsTemplate);
                 $templateUserId = $templateUser->id;
@@ -223,7 +223,6 @@ class PaymentController extends Controller
 
                 flash()->success('Se ha hecho el pago correctamente!');
                 return redirect('/dashboard');
-
             }
             else
             {

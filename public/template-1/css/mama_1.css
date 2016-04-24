@@ -49,7 +49,7 @@ src: local('Helvetica Neue LT Std 45 Light'), url('../font/HelveticaNeueLTStd Lt
 	font-size: 14px;
 	text-align: justify;
 }
-#texto_carta, #note-editor-2{
+#texto_carta {
    padding: 10px 0 0 50%;
    width: 600px;
 }

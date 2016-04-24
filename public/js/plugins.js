@@ -349,10 +349,12 @@ $(function() {
         // Summernote 
         var uiSummernote = function(){
             /* Extended summernote editor */
+            console.log($(".summernote").length);
             if($(".summernote").length > 0){
-                $(".summernote").summernote({
-
+                $('.summernote').summernote({
+                    airMode: true
                 });
+
             }
             /* END Extended summernote editor */
             

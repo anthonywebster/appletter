@@ -58,10 +58,10 @@
             $('#save-template').submit(function(e) {
                 e.preventDefault();
 
+                $('.summernote').destroy();
                 var content = $("#main").html();
                 var idTemplate = $("#id-template").val();
                 var token = $("input[name='_token']").val();
-
 
                 if (typeof(content) !== 'undefined' ) {
                     $.ajax({

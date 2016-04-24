@@ -45,12 +45,14 @@
 
                 @foreach($templates as $template)
 
-                <a class="gallery-item" href="{{asset('img/plantillas/girls-1.jpg')}}" title="{{ $template->content }}" data-gallery>
+                <a class="gallery-item" href="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}" title="{{ $templatesMain[$template->template_id] }}" data-gallery>
                     <div class="image">
-                        <img src="{{asset('img/plantillas/girls-1.jpg')}}" alt="Nature Image 1"/>
+                        <img src="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}" alt="{{ $templatesMain[$template->template_id] }}"/>
                         <ul class="gallery-item-controls">
                             <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
                             <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                            <li><span data-url="/dashboard/templates/{{ $template->id }}" class="gallery-item-show"><i class="fa fa-eye"></i></span></li>
+                            <li><span data-url="/dashboard/templates/{{ $template->id }}/edit" class="gallery-item-edit"><i class="fa fa-edit"></i></span></li>
                         </ul>
                     </div>
 

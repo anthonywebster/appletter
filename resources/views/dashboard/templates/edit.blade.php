@@ -64,7 +64,7 @@
 
                 if (typeof(content) !== 'undefined' ) {
                     $.ajax({
-                        url: 'http://appletter.dev/dashboard/templates/'+idTemplate,
+                        url: '{{ env('URL') }}dashboard/templates/'+idTemplate,
                         headers: {'X-CSRF-TOKEN': token},
                         data: { content: content },
                         type: 'PATCH',

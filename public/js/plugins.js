@@ -362,11 +362,11 @@ $(function() {
                 $(".summernote_lite").on("focus",function(){
                     
                     $(".summernote_lite").summernote({height: 100, focus: true,
-                                                      toolbar: [
-                                                          ["style", ["bold", "italic", "underline", "clear"]],
-                                                          ["insert",["link","picture","video"]]                                                          
-                                                      ]
-                                                     });
+                                  toolbar: [
+                                      ["style", ["bold", "italic", "underline", "clear"]],
+                                      ["insert",["link","picture","video"]]                                                          
+                                  ]
+                                 });
                 });                
             }
             /* END Lite summernote editor */

@@ -8,6 +8,7 @@
 @endsection
 
 @section('files-templates')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/summernote/summernote.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/mama_1.css') }}">
 @endsection

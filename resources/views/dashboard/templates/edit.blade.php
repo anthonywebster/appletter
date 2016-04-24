@@ -8,7 +8,6 @@
 @endsection
 
 @section('files-templates')
-    <link rel="stylesheet" src="{{ asset('css/summernote/summernote.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/mama_1.css') }}">
 @endsection
@@ -54,26 +53,28 @@
     <script type="text/javascript">
         $(function()
         {
-
             $('#save-template').submit(function(e) {
                 e.preventDefault();
+
+                alert("si");
 
                 var content = $("#main").html();
                 var idTemplate = $("#id-template").val();
                 var token = $("input[name='_token']").val();
+
+                $('.summernote').summernote('destroy');
+
+                alert(content);
 
 
                 if (typeof(content) !== 'undefined' ) {
                     $.ajax({
                         url: 'http://appletter.dev/dashboard/templates/'+idTemplate,
                         headers: {'X-CSRF-TOKEN': token},
-                        data: { content : content },
+                        content: content,
                         type: 'PATCH',
                         success: function(data){
-                            alert("Plantilla ha sido actualizada");
-
-                            location.reload();
-
+                            alert(data);
                         }
                     });
                 }

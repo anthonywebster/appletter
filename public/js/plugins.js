@@ -351,7 +351,7 @@ $(function() {
             /* Extended summernote editor */
             if($(".summernote").length > 0){
                 $(".summernote").summernote({
-
+                    airMode: true
                 });
             }
             /* END Extended summernote editor */

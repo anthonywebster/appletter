@@ -8,7 +8,7 @@
 @endsection
 
 @section('files-templates')
-    <link rel="stylesheet" src="{{ asset('css/summernote/summernote.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/summernote/summernote.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/mama_1.css') }}">
 @endsection
@@ -54,7 +54,6 @@
     <script type="text/javascript">
         $(function()
         {
-
             $('#save-template').submit(function(e) {
                 e.preventDefault();
 
@@ -67,13 +66,10 @@
                     $.ajax({
                         url: 'http://appletter.dev/dashboard/templates/'+idTemplate,
                         headers: {'X-CSRF-TOKEN': token},
-                        data: { content : content },
+                        data: { content: content },
                         type: 'PATCH',
                         success: function(data){
-                            alert("Plantilla ha sido actualizada");
-
-                            location.reload();
-
+                            alert(data);
                         }
                     });
                 }

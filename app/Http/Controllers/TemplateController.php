@@ -103,7 +103,7 @@ class TemplateController extends Controller
         $info = TemplateUser::findOrFail($id);
         $info->update($request->all());
 
-        return $request["content"];
+        return 1;
     }
 
     public function updateContent($content)

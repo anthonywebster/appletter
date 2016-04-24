@@ -72,6 +72,7 @@
                             if (data == 1)
                             {
                                 alert("La Plantilla ha sido actualizada");
+                                location.reload();
                             }
                         }
                     });

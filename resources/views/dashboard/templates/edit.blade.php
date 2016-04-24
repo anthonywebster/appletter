@@ -8,6 +8,7 @@
 @endsection
 
 @section('files-templates')
+    <link rel="stylesheet" src="{{ asset('css/summernote/summernote.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset($templateMain->template_name.'/css/mama_1.css') }}">
 @endsection
@@ -22,7 +23,7 @@
 @endsection
 
 @section('plugins')
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/summernote/summernote.js') }}"></script>
 @endsection
 
 @section('content')
@@ -53,28 +54,26 @@
     <script type="text/javascript">
         $(function()
         {
+
             $('#save-template').submit(function(e) {
                 e.preventDefault();
-
-                alert("si");
 
                 var content = $("#main").html();
                 var idTemplate = $("#id-template").val();
                 var token = $("input[name='_token']").val();
-
-                $('.summernote').summernote('destroy');
-
-                alert(content);
 
 
                 if (typeof(content) !== 'undefined' ) {
                     $.ajax({
                         url: 'http://appletter.dev/dashboard/templates/'+idTemplate,
                         headers: {'X-CSRF-TOKEN': token},
-                        content: content,
+                        data: { content : content },
                         type: 'PATCH',
                         success: function(data){
-                            alert(data);
+                            alert("Plantilla ha sido actualizada");
+
+                            location.reload();
+
                         }
                     });
                 }

@@ -41,6 +41,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('payment/status',['as' => 'payment.status', 'uses' => 'PaymentController@paymentStatus']);
 
     Route::get('dashboard/templates/lista','TemplateController@lista');
+    Route::get('dashboard/templates/pagos','TemplateController@payments');
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
         Route::get('templates/all','TemplateController@all');

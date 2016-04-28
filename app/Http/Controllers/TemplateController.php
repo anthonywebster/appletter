@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Payments;
 use App\Template;
 use App\TemplateUser;
 use App\User;
@@ -39,6 +40,13 @@ class TemplateController extends Controller
         
         $templates = TemplateUser::all();
         return view('dashboard.templates.lista',compact('templates'));
+    }
+
+    public function payments()
+    {
+        $payments = Payments::all();
+
+        return view('dashboard.templates.payments',compact('payments'));
     }
 
     /**
@@ -131,8 +139,8 @@ class TemplateController extends Controller
                 'email' => $user->email,
                 'id_template' => $id
             ), function($message) {
-                $message->from('lariosly2@gmail.com','Admin Site');
-                $message->to('fernando@ibisservicios.com', 'Admin Site')->subject('Plantilla Personalizada');
+                $message->from('fernando@ibisservicios.com','Admin Site');
+                $message->to('lariosly2@gmail.com', 'Admin Site')->subject('Plantilla Personalizada');
             }
         );
 

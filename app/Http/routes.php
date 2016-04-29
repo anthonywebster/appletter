@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('dashboard/templates/lista','TemplateController@lista');
     Route::get('dashboard/templates/pagos','TemplateController@payments');
-    Route::get('templates/{id}/imprimir','TemplateController@imprimir');
+    Route::get('dashboard/templates/{id}/imprimir','TemplateController@imprimir');
     
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');

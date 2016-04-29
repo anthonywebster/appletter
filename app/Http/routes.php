@@ -42,11 +42,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('dashboard/templates/lista','TemplateController@lista');
     Route::get('dashboard/templates/pagos','TemplateController@payments');
+    Route::get('templates/{id}/imprimir','TemplateController@imprimir');
+    
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');
         Route::get('templates/all','TemplateController@all');
         Route::get('templates/list','TemplateController@list');
-        Route::get('templates/{id}/imprimir','TemplateController@imprimir');
         Route::get('templates/{id}/enviar','TemplateController@send');
         Route::resource('templates','TemplateController');
         Route::resource('pago','PaymentController');

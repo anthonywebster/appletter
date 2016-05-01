@@ -48,6 +48,10 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/','DashboardController@index');
         Route::get('templates/all','TemplateController@all');
         Route::get('templates/list','TemplateController@list');
+        
+        Route::post('templates/{id}/cambiar','TemplateController@templateChange');
+        Route::get('templates/{id}/cambiar','TemplateController@change');
+        
         Route::get('templates/{id}/enviar','TemplateController@send');
         Route::resource('templates','TemplateController');
         Route::resource('pago','PaymentController');

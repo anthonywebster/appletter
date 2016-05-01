@@ -149,6 +149,31 @@ class TemplateController extends Controller
 
     }
 
+    public function change($id)
+    {
+        $templatesMain = Template::lists("name","id")->toArray();
+        $templates = Template::all();
+        
+        return view('dashboard.templates.change',compact('id','templates','templatesMain'));
+    }
+
+    public function templateChange(Request $request)
+    {
+
+        $templateMain = Template::findOrFail($request["template"]);
+
+        $template = TemplateUser::findOrFail($request["template_user"]);
+
+        $template->content = $templateMain->content;
+        $template->template_id = $templateMain->id;
+        $template->changed = 1;
+
+        $template->save();
+
+        flash()->success("La Plantilla ha sido cambiada");
+        return redirect('dashboard/templates/');
+    }
+
     public function imprimir($id)
     {
         $template = TemplateUser::findOrFail($id);

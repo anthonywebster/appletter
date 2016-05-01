@@ -349,8 +349,8 @@ $(function() {
         // Summernote 
         var uiSummernote = function(){
             /* Extended summernote editor */
-            console.log($(".summernote").length);
-            if($(".summernote").length > 0){
+
+            if($(".summernote---").length > 0){
                 $('.summernote').summernote({
                     airMode: true
                 });

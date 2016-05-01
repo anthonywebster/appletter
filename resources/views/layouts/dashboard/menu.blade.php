@@ -27,7 +27,7 @@
         <ul>
             <li><a href="{{url('dashboard/templates/all')}}"><span class="fa fa-edit"></span>Plantillas</a></li>
             <li><a href="{{url('dashboard/templates')}}"><span class="fa fa-edit"></span>Mis Plantillas</a></li>
-            <li><a href="#"><span class="fa fa-shopping-cart"></span> Comprar Nueva</a></li>
+            <li><a href="/payment"><span class="fa fa-shopping-cart"></span> Comprar Nueva</a></li>
 
         </ul>
     </li>

@@ -51,7 +51,7 @@
                                 <ul class="gallery-item-controls">
                                     <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
                                     <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    <li><span data-url="/payment/{{ $template->id }}/comprar" class="gallery-item-edit"><i class="fa fa-edit"></i></span></li>
+                                    <li><span data-url="/payment/{{ $template->id }}/comprar" class="gallery-item-edit"><i class="fa fa-download"></i></span></li>
                                 </ul>
                             </div>
                             <div class="meta">

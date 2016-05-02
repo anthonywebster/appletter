@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('auth/facebook/callback','Auth\AuthController@handleProviderCallback');
 
+    Route::get('payment/{id}/comprar','PaymentController@postPayment');
     Route::get('payment',['as' => 'payment','uses' => 'PaymentController@postPayment']);
 
     Route::get('payment/status',['as' => 'payment.status', 'uses' => 'PaymentController@paymentStatus']);
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('dashboard/templates/lista','TemplateController@lista');
     Route::get('dashboard/templates/pagos','TemplateController@payments');
     Route::get('dashboard/templates/{id}/imprimir','TemplateController@imprimir');
+    
     
     Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function(){
         Route::get('/','DashboardController@index');

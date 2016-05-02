@@ -117,7 +117,7 @@ class PaymentController extends Controller
         //
     }
 
-    public function postPayment()
+    public function postPayment($id = false)
     {
         $payer = new Payer();
 
@@ -167,6 +167,10 @@ class PaymentController extends Controller
         }
 
         \Session::put('paypal_payment_id',$payment->getId());
+        
+        if ($id) {
+            \Session::put('id_template',$id);
+        }
 
         if(isset($redirect_url)){
             return \Redirect::away($redirect_url);
@@ -178,6 +182,8 @@ class PaymentController extends Controller
     {
         $payment_id = \Session::get('paypal_payment_id');
 //        \Session::forget('paypal_payment_id');
+
+        $template_id = \Session::get('id_template') > 0 ? \Session::get('id_template') : NULL;
         
         $payment = Payment::get($payment_id,$this->_api_context);
         $execution = new PaymentExecution();
@@ -210,7 +216,7 @@ class PaymentController extends Controller
                 $template = Template::findOrFail(1);
                 $inputsTemplate["content"] = $template->content;
                 $inputsTemplate["user_id"] = $inputs["user_id"];
-                $inputsTemplate["template_id"] = $template->id;
+                $inputsTemplate["template_id"] = $template_id ?: $template->id;
 
                 $templateUser = TemplateUser::create($inputsTemplate);
                 $templateUserId = $templateUser->id;

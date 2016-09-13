@@ -29,7 +29,7 @@
         <!-- Cuerpo del site -->
         <div class="content-frame-body content-frame-body-left">
 
-            <div class="pull-left push-up-10">
+            <!--<div class="pull-left push-up-10">
                 <button class="btn btn-primary" id="gallery-toggle-items">Seleccionar todo</button>
             </div>
             <div class="pull-right push-up-10">
@@ -37,7 +37,10 @@
                     <button class="btn btn-primary"><span class="fa fa-pencil"></span> Editar</button>
                     <button class="btn btn-primary"><span class="fa fa-trash-o"></span> Borrar</button>
                 </div>
-            </div>
+            </div>-->
+
+            <h1>Mis Plantillas</h1>
+            <hr style="border: 0; border-top: 1px solid #eee; border-bottom: 1px solid #fff;">
 
             @if ( !empty($templates) )
 
@@ -49,10 +52,28 @@
                     <div class="image">
                         <img src="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}" alt="{{ $templatesMain[$template->template_id] }}"/>
                         <ul class="gallery-item-controls">
-                            <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
-                            <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                            <li><span data-url="/dashboard/templates/{{ $template->id }}" class="gallery-item-show"><i class="fa fa-eye"></i></span></li>
-                            <li><span data-url="/dashboard/templates/{{ $template->id }}/edit" class="gallery-item-edit"><i class="fa fa-edit"></i></span></li>
+                            <!--
+                            <li>
+                                <label class="check">
+                                    <input type="checkbox" class="icheckbox"/>
+                                </label>
+                            </li>
+                            <li>
+                                <span class="gallery-item-remove">
+                                    <i class="fa fa-times"></i>
+                                </span>
+                            </li>
+                            -->
+                            <li>
+                                <span data-url="/dashboard/templates/{{ $template->id }}" class="gallery-item-show">
+                                    <i class="fa fa-eye"></i>
+                                </span>
+                            </li>
+                            <li>
+                                <span data-url="/dashboard/templates/{{ $template->id }}/edit" class="gallery-item-edit">
+                                    <i class="fa fa-edit"></i>
+                                </span>
+                            </li>
                         </ul>
                     </div>
 

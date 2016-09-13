@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <a class="btn btn-info" href="/dashboard/templates/1/enviar">Enviar template</a>
+    <a class="btn btn-info" href="/dashboard/templates/{{ $id }}/enviar">Enviar template</a>
     <?php $dirImage = asset($templateMain->template_name.'/img\/'); ?>
     <div class="content-frame">
     {!! str_replace('img/',$dirImage,$template->content) !!}

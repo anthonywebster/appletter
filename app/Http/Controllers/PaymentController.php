@@ -48,7 +48,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('dashboard.payment.index');
+        $user = \Auth::user()->id;
+        $myTemplates = TemplateUser::where('user_id',$user)->get();
+
+        return view('dashboard.payment.index', compact('myTemplates'));
     }
 
     /**
@@ -221,6 +224,7 @@ class PaymentController extends Controller
                 $templateUser = TemplateUser::create($inputsTemplate);
                 $templateUserId = $templateUser->id;
                 $inputs['template_users_id'] = $templateUserId;
+                $inputs['changed'] = 0;
 
                 $payment = Payments::create($inputs);
                 $paymentTransaction = PaymentTransaction::create($inputs);

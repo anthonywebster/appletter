@@ -22,15 +22,17 @@
                 <h1 class="text-center">Notita.org</h1>
             </div>
             <div class="modal-body">
+                @if ($errors->has('email'))
+                    <div class="alert alert-danger">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </div>
+
+                @endif
+
                 <form class="form col-md-12 center-block" role="form" method="POST" action="{{ url('/login') }}">
                     {!! csrf_field() !!}
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <input type="email" class="form-control input-lg" name="email" value="{{ old('email') }}">
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <input type="password" class="form-control input-lg" name="password" placeholder="Password">

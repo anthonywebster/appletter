@@ -42,6 +42,7 @@
             <button id="edit" class="btn btn-primary" type="button">Edit Contenido</button>
             <input type="submit" value="Guardar" class="btn btn-success">
             <input type="hidden" id="id-template" value="{{ $template->id }}">
+            <input type="hidden" id="changed" value="1">
         {!! Form::close() !!}
         <br><br>
         <?php $dirImage = asset($templateMain->template_name.'/img\/'); ?>
@@ -74,13 +75,17 @@
             $('.summernote').destroy();
             var content = $("#main").html();
             var idTemplate = $("#id-template").val();
+            var changed = $("#changed").val();
             var token = $("input[name='_token']").val();
 
             if (typeof(content) !== 'undefined' ) {
                 $.ajax({
                     url: '{{ env('URL') }}dashboard/templates/'+idTemplate,
                     headers: {'X-CSRF-TOKEN': token},
-                    data: { content: content },
+                    data: {
+                        content: content,
+                        changed: changed,
+                    },
                     type: 'PATCH',
                     success: function(data){
                         if (data == 1)

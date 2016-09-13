@@ -81,7 +81,7 @@ class TemplateController extends Controller
         $template = TemplateUser::findOrFail($id);
         $templateMain = Template::findOrFail($template->template_id);
 
-        return view('dashboard.templates.show',compact('template','templateMain'));
+        return view('dashboard.templates.show',compact('template','templateMain','id'));
     }
 
     /**
@@ -132,20 +132,29 @@ class TemplateController extends Controller
 
     public function send($id)
     {
-        $user = User::findOrFail($id);
-        Mail::send('emails.content-mail',
-            array(
-                'name' => $user->name,
-                'email' => $user->email,
-                'id_template' => $id
-            ), function($message) {
-                $message->from('fernando@ibisservicios.com','Admin Site');
-                $message->to('lariosly2@gmail.com', 'Admin Site')->subject('Plantilla Personalizada');
-            }
-        );
+        $infoTemplate = TemplateUser::where('id',$id)->first();
 
-        flash()->success("Su mensaje ha sido enviado");
-        return redirect()->back();
+        if ( !empty($infoTemplate) ) {
+            $user = User::findOrFail($infoTemplate->user_id);
+            Mail::send('emails.content-mail',
+                array(
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'id_template' => $id
+                ), function($message) {
+                    $message->from('fernando@ibisservicios.com','Admin Site');
+                    $message->to('lariosly2@gmail.com', 'Admin Site')->subject('Plantilla Personalizada');
+                }
+            );
+
+            flash()->success("Su mensaje ha sido enviado");
+            return redirect()->back();
+
+        } else {
+            flash()->error("Hubo un error al tratar de enviar la plantilla por correo");
+            return redirect()->back();
+        }
+
 
     }
 
@@ -166,7 +175,7 @@ class TemplateController extends Controller
 
         $template->content = $templateMain->content;
         $template->template_id = $templateMain->id;
-        $template->changed = 1;
+        //$template->changed = 1;
 
         $template->save();
 

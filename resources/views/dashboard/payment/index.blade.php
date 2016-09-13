@@ -91,7 +91,41 @@
 
                         </div>
                         <div class="tab-pane" id="tab-second">
-                            <p>Donec tristique eu sem et aliquam. Proin sodales elementum urna et euismod. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.</p>
+                            <h1>Lista de Pagos</h1>
+                            @if (!empty($myTemplates) )
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Plantilla</th>
+                                            <th>Fecha Pago</th>
+                                            <th>Monto</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach( $myTemplates as $myTemplate)
+                                            <tr>
+
+
+                                                <td>
+                                                    {{ $myTemplate->template->name }}
+                                                </td>
+                                                <td>
+                                                    {{ $myTemplate->getPayment->created_at }}
+
+                                                </td>
+                                                <td>
+                                                    U$ {{ number_format($myTemplate->getPayment->amount,2) }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            @endif
+
                         </div>
 
                         <div class="panel-footer">

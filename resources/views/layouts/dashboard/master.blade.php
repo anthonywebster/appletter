@@ -31,6 +31,7 @@
 
         <!-- CONTENIDO DEL SITIO  -->
         <div class="page-content-wrap">
+            @include('flash::message')
             @yield('content')
         </div>
         <!-- FIN DE CONTENIDO -->

@@ -181,6 +181,10 @@ class PaymentController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function paymentStatus(Request $request)
     {
         $payment_id = \Session::get('paypal_payment_id');

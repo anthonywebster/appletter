@@ -16,6 +16,9 @@ class PaypalController extends Controller {
 
     private $_api_context;
 
+    /**
+     * PaypalController constructor.
+     */
     public function __construct()
     {
         $paypal_conf = \Config::get('paypal');

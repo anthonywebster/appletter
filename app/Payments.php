@@ -20,6 +20,9 @@ class Payments extends Model
         'token',
     );
 
+    /**
+     * @return mixed
+     */
     public function templateUser()
     {
         return $this->belongsTo('App\TemplateUser','template_users_id');

@@ -18,6 +18,7 @@ class PaypalController extends Controller {
 
     /**
      * PaypalController constructor.
+     *
      */
     public function __construct()
     {

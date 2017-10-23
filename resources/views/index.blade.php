@@ -530,7 +530,7 @@
                             </div>
                             <div class="fc-row">
                                 <span class="fa fa-phone"></span>
-                                (123) 456-7890
+                                +1 (212) 456-7890
                             </div>
                             <div class="fc-row">
                                 <span class="fa fa-envelope"></span>
@@ -542,7 +542,7 @@
                     <div class="col-md-3">
                         <h3>Suscríbete</h3>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder=" email"/>
+                            <input type="text" class="form-control" placeholder="Email"/>
                             <div class="input-group-btn">
                                 <button class="btn btn-primary"><span class="fa fa-paper-plane"></span></button>
                             </div>

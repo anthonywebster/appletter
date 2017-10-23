@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>Login</title>
-    <meta name="generator" content="Bootply" />
+    <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -39,14 +39,17 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-lg btn-block">Entrar</button>
-                        <a href="{{url('/auth/facebook')}}" class="btn btn-primary btn-lg btn-block">Login with Facebook</a>
+                        <a href="{{url('/auth/facebook')}}" class="btn btn-primary btn-lg btn-block">Login with
+                            Facebook</a>
                         <span class="pull-right"><a href="{{url('/register')}}">Registro</a></span><span><a href="#">Necesitas ayuda?</a></span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <div class="col-md-12">
-                    <a href="/"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button></a>
+                    <a href="/">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,6 @@
     <div class="content-frame">
 
 
-
         <!-- Contenido parte derecha categorias -->
         <div class="content-frame-right">
             <h4>Categorias:</h4>
@@ -44,49 +43,53 @@
 
             @if ( !empty($templates) )
 
-            <div class="gallery" id="links">
+                <div class="gallery" id="links">
 
-                @foreach($templates as $template)
+                    @foreach($templates as $template)
 
-                <a class="gallery-item" href="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}" title="{{ $templatesMain[$template->template_id] }}" data-gallery>
-                    <div class="image">
-                        <img src="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}" alt="{{ $templatesMain[$template->template_id] }}"/>
-                        <ul class="gallery-item-controls">
-                            <!--
-                            <li>
-                                <label class="check">
-                                    <input type="checkbox" class="icheckbox"/>
-                                </label>
-                            </li>
-                            <li>
-                                <span class="gallery-item-remove">
-                                    <i class="fa fa-times"></i>
-                                </span>
-                            </li>
-                            -->
-                            <li>
+                        <a class="gallery-item"
+                           href="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}"
+                           title="{{ $templatesMain[$template->template_id] }}" data-gallery>
+                            <div class="image">
+                                <img src="{{ asset('template-'.$template->template_id.'/img/template-'.$template->template_id.'.png') }}"
+                                     alt="{{ $templatesMain[$template->template_id] }}"/>
+                                <ul class="gallery-item-controls">
+                                    <!--
+                                    <li>
+                                        <label class="check">
+                                            <input type="checkbox" class="icheckbox"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <span class="gallery-item-remove">
+                                            <i class="fa fa-times"></i>
+                                        </span>
+                                    </li>
+                                    -->
+                                    <li>
                                 <span data-url="/dashboard/templates/{{ $template->id }}" class="gallery-item-show">
                                     <i class="fa fa-eye"></i>
                                 </span>
-                            </li>
-                            <li>
-                                <span data-url="/dashboard/templates/{{ $template->id }}/edit" class="gallery-item-edit">
+                                    </li>
+                                    <li>
+                                <span data-url="/dashboard/templates/{{ $template->id }}/edit"
+                                      class="gallery-item-edit">
                                     <i class="fa fa-edit"></i>
                                 </span>
-                            </li>
-                        </ul>
-                    </div>
+                                    </li>
+                                </ul>
+                            </div>
 
-                    <div class="meta">
-                        <strong></strong>
-                        <span></span>
-                    </div>
-                </a>
+                            <div class="meta">
+                                <strong></strong>
+                                <span></span>
+                            </div>
+                        </a>
 
-                @endforeach
+                    @endforeach
 
 
-            </div>
+                </div>
 
             @endif
 
@@ -120,11 +123,13 @@
             event = event || window.event;
             var target = event.target || event.srcElement;
             var link = target.src ? target.parentNode : target;
-            var options = {index: link, event: event,onclosed: function(){
-                setTimeout(function(){
-                    $("body").css("overflow","");
-                },200);
-            }};
+            var options = {
+                index: link, event: event, onclosed: function () {
+                    setTimeout(function () {
+                        $("body").css("overflow", "");
+                    }, 200);
+                }
+            };
             var links = this.getElementsByTagName('a');
             blueimp.Gallery(links, options);
         };

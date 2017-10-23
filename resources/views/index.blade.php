@@ -530,7 +530,7 @@
                             </div>
                             <div class="fc-row">
                                 <span class="fa fa-phone"></span>
-                                (123) 456-7890
+                                +1 (212) 456-7890
                             </div>
                             <div class="fc-row">
                                 <span class="fa fa-envelope"></span>

@@ -11,7 +11,6 @@
     <div class="content-frame">
 
 
-
         <!-- Contenido parte derecha categorias -->
         <div class="content-frame-right">
             <h4>Categorias:</h4>
@@ -35,7 +34,7 @@
                 </div>
             @endif
 
-            <!--<div class="pull-left push-up-10">
+        <!--<div class="pull-left push-up-10">
                 <button class="btn btn-primary" id="gallery-toggle-items">Seleccionar todo</button>
             </div>
             <div class="pull-right push-up-10">
@@ -54,9 +53,12 @@
 
                     @foreach($templates as $template)
 
-                        <a class="gallery-item" href="{{ asset('template-'.$template->id.'/img/template-'.$template->id.'.png') }}" title="{{ $template->name }}" data-gallery>
+                        <a class="gallery-item"
+                           href="{{ asset('template-'.$template->id.'/img/template-'.$template->id.'.png') }}"
+                           title="{{ $template->name }}" data-gallery>
                             <div class="image">
-                                <img src="{{ asset('template-'.$template->id.'/img/template-'.$template->id.'.png') }}" alt="Nature Image 1"/>
+                                <img src="{{ asset('template-'.$template->id.'/img/template-'.$template->id.'.png') }}"
+                                     alt="Nature Image 1"/>
                                 <ul class="gallery-item-controls">
                                     <!--
                                     <li>
@@ -70,7 +72,8 @@
                                         </span>
                                     </li>
                                     -->
-                                    <li><span data-url="/payment/{{ $template->id }}/comprar" class="gallery-item-edit"><i class="fa fa-download"></i></span></li>
+                                    <li><span data-url="/payment/{{ $template->id }}/comprar" class="gallery-item-edit"><i
+                                                    class="fa fa-download"></i></span></li>
                                 </ul>
                             </div>
                             <div class="meta">
@@ -116,11 +119,13 @@
             event = event || window.event;
             var target = event.target || event.srcElement;
             var link = target.src ? target.parentNode : target;
-            var options = {index: link, event: event,onclosed: function(){
-                setTimeout(function(){
-                    $("body").css("overflow","");
-                },200);
-            }};
+            var options = {
+                index: link, event: event, onclosed: function () {
+                    setTimeout(function () {
+                        $("body").css("overflow", "");
+                    }, 200);
+                }
+            };
             var links = this.getElementsByTagName('a');
             blueimp.Gallery(links, options);
         };

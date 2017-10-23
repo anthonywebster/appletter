@@ -8,21 +8,20 @@
 @endsection
 
 @section('css')
-.image {
+    .image {
     float: left;
     width: 25%;
     padding: 10px 5px 10px 5px;
     text-decoration: none;
     overflow:hidden;
-}
-.image img {
+    }
+    .image img {
     width:100%;
-}
+    }
 @endsection
 
 @section('content')
     <div class="content-frame">
-
 
 
         <!-- Contenido parte derecha categorias -->
@@ -55,12 +54,13 @@
 
                     @foreach($templates as $template)
 
-                    <div class="image">
-                        <label for="">
-                        <img src="{{ asset('template-'.$template->id.'/img/template-'.$template->id.'.png') }}" title="{{ $templatesMain[$template->id] }}" alt=""/>
-                        <input type="radio" name="template" value="{{ $template->id }}"> {{ $template->name }}
-                        </label>
-                    </div>
+                        <div class="image">
+                            <label for="">
+                                <img src="{{ asset('template-'.$template->id.'/img/template-'.$template->id.'.png') }}"
+                                     title="{{ $templatesMain[$template->id] }}" alt=""/>
+                                <input type="radio" name="template" value="{{ $template->id }}"> {{ $template->name }}
+                            </label>
+                        </div>
 
                     @endforeach
 
